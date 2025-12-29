@@ -26,6 +26,8 @@ export type DisposeFunction<K, V> = (
   reason: DisposeReason,
 ) => unknown
 
+const TIMER_MAX: TimeInMilliseconds = 2**31 - 1
+
 export type TimeInMilliseconds = number
 
 export type TTLCacheOptions<K, V> = {
@@ -148,7 +150,7 @@ export class TTLCache<K = unknown, V = unknown> {
           break
         }
       },
-      Math.max(0, ttl),
+      Math.min(TIMER_MAX, Math.max(0, ttl)),
     )
 
     /* c8 ignore start - affordance for non-node envs */
