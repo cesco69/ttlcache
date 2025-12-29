@@ -2,6 +2,8 @@
 /*
 /.*
 
+!/.taprc
+!/.prettier*
 !/src
 !/.tshy
 !/tsconfig.json
